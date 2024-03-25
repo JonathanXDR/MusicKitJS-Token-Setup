@@ -23,13 +23,13 @@ const token = jwt.sign({}, private_key, {
   issuer: team_id,
   header: {
     alg: 'ES256',
-    kid: key_id
-  }
+    kid: key_id,
+  },
 });
 
 app.get('/token', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({token: token}));
+  res.send(JSON.stringify({ token: token }));
 });
 
 app.use(express.static(publicDir));
